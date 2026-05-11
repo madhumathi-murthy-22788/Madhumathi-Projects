@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Access Log Demo</title>
+</head>
+<body>
+    <div>
+        <button type="button" id="btn-hi">Hi</button>
+        <button type="button" id="btn-hello">Hello</button>
+        <button type="button" id="btn-welcome">Welcome</button>
+    </div>
+    <textarea id="show-message" rows="4" cols="40" readonly placeholder="Message here…"></textarea>
+
+    <pre id="firebase-status" style="background:#f5f5f5;padding:8px;max-width:40rem;white-space:pre-wrap;"></pre>
+</body>
+<script>
+function setMessage(msg) {
+    document.getElementById('show-message').value = msg;
+}
+
+function showMessageAjax(path) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', path, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            setMessage(xhr.responseText);
+        }
+    };
+    xhr.send();
+}
+
+document.getElementById('btn-hi').onclick = function() {
+    showMessageAjax('hi');
+};
+document.getElementById('btn-hello').onclick = function() {
+    showMessageAjax('hello');
+};
+document.getElementById('btn-welcome').onclick = function() {
+    showMessageAjax('welcome');
+};
+</script>
+</html>

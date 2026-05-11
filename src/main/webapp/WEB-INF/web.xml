@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+  <display-name>AccessLogs</display-name>
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+
+  <servlet>
+    <servlet-name>HiServlet</servlet-name>
+    <servlet-class>com.servlets.HiServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HiServlet</servlet-name>
+    <url-pattern>/hi</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>HelloServlet</servlet-name>
+    <servlet-class>com.servlets.HelloServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HelloServlet</servlet-name>
+    <url-pattern>/hello</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>WelcomeServlet</servlet-name>
+    <servlet-class>com.servlets.WelcomeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WelcomeServlet</servlet-name>
+    <url-pattern>/welcome</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>LogViewerServlet</servlet-name>
+    <servlet-class>com.servlets.LogViewerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogViewerServlet</servlet-name>
+    <url-pattern>/logs</url-pattern>
+  </servlet-mapping>
+ <filter>
+    <filter-name>AccessLogFilter</filter-name>
+    <filter-class>com.filters.AccessLogFilter</filter-class>
+</filter>
+
+<filter-mapping>
+    <filter-name>AccessLogFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+</web-app>
